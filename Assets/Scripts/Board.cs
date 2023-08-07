@@ -64,6 +64,7 @@ public class Board : MonoBehaviour
 
     public void GameOver()
     {
+        Time.timeScale = 0;
         tilemap.ClearAllTiles();
         tilemap_otherGame.ClearAllTiles();
         // Do anything else you want on game over here..
