@@ -15,6 +15,8 @@ public class Board : MonoBehaviour
     public SpriteRenderer grid;
     public SpriteRenderer border;
 
+    public TileBase grey_Tile;
+
 
     private int rowsSetFromEnemy;
 
@@ -123,7 +125,7 @@ public class Board : MonoBehaviour
             // because the tiles above will fall down when a row is cleared
             if (IsLineFull(row)) {
                 LineClear(row);
-                rowsSetFromEnemy++;
+                //rowsSetFromEnemy++;
             } else {
                 row++;
             }
@@ -164,7 +166,7 @@ public class Board : MonoBehaviour
             tilemap.SetTile(position, null);
         }
 
-        SetEnemyLine(row, enemyTiles);
+        SetEnemyLine(row);
 
         // Shift every row above down one
         while (row < bounds.yMax)
@@ -182,7 +184,7 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void SetEnemyLine(int row, TileBase[] enemyTiles)
+    public void SetEnemyLine(int row)
     {
         RectInt bounds = Bounds;
         // Shift every row below up one
@@ -203,7 +205,7 @@ public class Board : MonoBehaviour
         for (int col = bounds.xMin; col < bounds.xMax; col++)
         {
             Vector3Int position = new Vector3Int(col, -boardSize.y/2, 0);
-            tilemap_otherGame.SetTile(position, enemyTiles[col+ bounds.xMax]);
+            tilemap_otherGame.SetTile(position, grey_Tile);
         }
 
 
