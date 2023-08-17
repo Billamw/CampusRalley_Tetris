@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class Board : MonoBehaviour
 {
@@ -17,8 +18,9 @@ public class Board : MonoBehaviour
 
     public TileBase grey_Tile;
 
-
-    private int rowsSetFromEnemy;
+    public TextMeshProUGUI text;
+    [SerializeField]
+    internal Piece pieceScript;
 
     public RectInt Bounds {
         get
@@ -41,8 +43,8 @@ public class Board : MonoBehaviour
             tetrominoes[i].Initialize();
         }
 
+        text = FindObjectOfType<TextMeshProUGUI>();
 
-        rowsSetFromEnemy = 0;
     }
 
     private void Start()
@@ -70,6 +72,13 @@ public class Board : MonoBehaviour
         tilemap.ClearAllTiles();
         tilemap_otherGame.ClearAllTiles();
         // Do anything else you want on game over here..
+        if(pieceScript.isGame2)
+        {
+            text.text = "Player left lost";
+        } else
+        {
+            text.text = "Player right lost";
+        }
     }
 
     public void Set(Piece piece)
@@ -116,7 +125,7 @@ public class Board : MonoBehaviour
     public void ClearLines()
     {
         RectInt bounds = Bounds;
-        int row = bounds.yMin + rowsSetFromEnemy;
+        int row = bounds.yMin;
 
         // Clear from bottom to top
         while (row < bounds.yMax)
@@ -141,7 +150,7 @@ public class Board : MonoBehaviour
             Vector3Int position = new Vector3Int(col, row, 0);
 
             // The line is not full if a tile is missing
-            if (!tilemap.HasTile(position)) {
+            if (!tilemap.HasTile(position) || tilemap.GetTile(position).Equals(grey_Tile)) {
                 return false;
             }
         }
@@ -166,8 +175,6 @@ public class Board : MonoBehaviour
             tilemap.SetTile(position, null);
         }
 
-        SetEnemyLine(row);
-
         // Shift every row above down one
         while (row < bounds.yMax)
         {
@@ -182,32 +189,37 @@ public class Board : MonoBehaviour
 
             row++;
         }
+
+        SetEnemyLine();
     }
 
-    public void SetEnemyLine(int row)
+    public void SetEnemyLine()
     {
-        print("SetEnemyLine " + row);
         RectInt bounds = Bounds;
+        int row = bounds.yMin;
         // Shift every row below up one
         while (HasLineTile(row, tilemap_otherGame))
         {
             row++;
         }
-        print("SetEnemyLine after " + row);
 
-        while (row > -10)
+        while (row > bounds.yMin)
         {
             for (int col = bounds.xMin; col < bounds.xMax; col++)
             {
                 Vector3Int position = new Vector3Int(col, row - 1, 0);
 
-                TileBase below = grey_Tile;
+                TileBase below = tilemap_otherGame.GetTile(position);
 
                 position = new Vector3Int(col, row, 0);
                 tilemap_otherGame.SetTile(position, below);
 
-                //position = new Vector3Int(col, row + 1, 0);
-                //tilemap_otherGame.SetTile(position, grey_Tile);
+                if (row == bounds.yMin + 1)
+                {
+                    position = new Vector3Int(col, row - 1, 0);
+                    tilemap_otherGame.SetTile(position, grey_Tile);
+                }
+
             }
 
             row--;

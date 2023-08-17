@@ -10,8 +10,8 @@ public class Piece : MonoBehaviour
 
     public bool isGame2;
 
-    public float stepDelay = 1f;
-    public float moveDelay = 0.1f;
+    public float stepDelay = 0.5f;
+    public float moveDelay = 0.2f;
     public float lockDelay = 0.1f;
 
     private float stepTime;
