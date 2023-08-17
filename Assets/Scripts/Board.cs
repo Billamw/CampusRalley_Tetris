@@ -186,29 +186,59 @@ public class Board : MonoBehaviour
 
     public void SetEnemyLine(int row)
     {
+        print("SetEnemyLine " + row);
         RectInt bounds = Bounds;
         // Shift every row below up one
-        while (row > 1)
+        while (HasLineTile(row, tilemap_otherGame))
+        {
+            row++;
+        }
+        print("SetEnemyLine after " + row);
+
+        while (row > -10)
         {
             for (int col = bounds.xMin; col < bounds.xMax; col++)
             {
                 Vector3Int position = new Vector3Int(col, row - 1, 0);
-                TileBase below = tilemap_otherGame.GetTile(position);
+
+                TileBase below = grey_Tile;
 
                 position = new Vector3Int(col, row, 0);
                 tilemap_otherGame.SetTile(position, below);
+
+                //position = new Vector3Int(col, row + 1, 0);
+                //tilemap_otherGame.SetTile(position, grey_Tile);
             }
 
             row--;
         }
 
+
+
+        //for (int col = bounds.xMin; col < bounds.xMax; col++)
+        //{
+        //    Vector3Int position = new Vector3Int(col, -boardSize.y/2, 0);
+        //    tilemap_otherGame.SetTile(position, grey_Tile);
+        //}
+
+
+    }
+
+    public bool HasLineTile(int row, Tilemap tilemap)
+    {
+        RectInt bounds = Bounds;
+
         for (int col = bounds.xMin; col < bounds.xMax; col++)
         {
-            Vector3Int position = new Vector3Int(col, -boardSize.y/2, 0);
-            tilemap_otherGame.SetTile(position, grey_Tile);
+            Vector3Int position = new Vector3Int(col, row, 0);
+
+            if (tilemap.HasTile(position))
+            {
+                return true;
+            }
         }
 
-
+        return false;
     }
 
 }
