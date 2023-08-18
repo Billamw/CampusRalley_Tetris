@@ -29,6 +29,7 @@ public class WhoWon : MonoBehaviour
     private void Start()
     {
         text = FindObjectOfType<TextMeshProUGUI>();
+
     }
 
 
@@ -40,7 +41,8 @@ public class WhoWon : MonoBehaviour
         {
             text = FindObjectOfType<TextMeshProUGUI>();
         }
-        if(whoWon == 2) {
+
+        if (whoWon == 2) {
             text.text = "\n\n press Enter to start the game!";
         }
         else if(whoWon == 0)
@@ -56,7 +58,11 @@ public class WhoWon : MonoBehaviour
         {
             SceneManager.LoadScene(1, LoadSceneMode.Single);
         }
+
+
     }
+
+
 
     
 }
