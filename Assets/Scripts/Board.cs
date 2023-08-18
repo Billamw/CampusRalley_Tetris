@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Board : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class Board : MonoBehaviour
 
     private void Awake()
     {
+
+        //Camera.main.orthographicSize = 14;
         tilemap = GetComponentInChildren<Tilemap>();
         activePiece = GetComponentInChildren<Piece>();
 
@@ -68,17 +71,17 @@ public class Board : MonoBehaviour
 
     public void GameOver()
     {
-        Time.timeScale = 0;
         tilemap.ClearAllTiles();
         tilemap_otherGame.ClearAllTiles();
         // Do anything else you want on game over here..
         if(pieceScript.isGame2)
         {
-            text.text = "Player left lost";
+            WhoWon.Instance.whoWon = 1;
         } else
         {
-            text.text = "Player right lost";
+            WhoWon.Instance.whoWon = 0;
         }
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     public void Set(Piece piece)
@@ -162,15 +165,13 @@ public class Board : MonoBehaviour
     {
         RectInt bounds = Bounds;
 
-        TileBase[] enemyTiles = new TileBase[2*bounds.xMax];
+        SetEnemyLine();
+
+
         // Clear all tiles in the row
         for (int col = bounds.xMin; col < bounds.xMax; col++)
         {
             Vector3Int position = new Vector3Int(col, row, 0);
-
-
-            enemyTiles[col+bounds.xMax] = tilemap.GetTile(position);
-
 
             tilemap.SetTile(position, null);
         }
@@ -190,7 +191,6 @@ public class Board : MonoBehaviour
             row++;
         }
 
-        SetEnemyLine();
     }
 
     public void SetEnemyLine()

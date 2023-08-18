@@ -275,7 +275,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
@@ -298,7 +298,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.18382978, g: 0.2093617, b: 0.24, a: 1}
+  m_BackGroundColor: {r: 0.18431373, g: 0.20784315, b: 0.2392157, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -315,7 +315,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 12.36
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -538,7 +538,7 @@ MonoBehaviour:
     tetromino: 5
   - tile: {fileID: 11400000, guid: be0a34e2a842ae742b4fa8541a5f9fcf, type: 2}
     tetromino: 6
-  boardSize: {x: 10, y: 20}
+  boardSize: {x: 8, y: 20}
   spawnPosition: {x: -1, y: 8, z: 0}
   grid: {fileID: 1364242839}
   border: {fileID: 711884983}
@@ -586,7 +586,7 @@ Transform:
   m_GameObject: {fileID: 711884981}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.20420843, y: 1.5117726, z: 20.323893}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1561427156}
   m_RootOrder: 3
@@ -871,7 +871,7 @@ Transform:
   m_GameObject: {fileID: 1062971706}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.20420843, y: 1.5117726, z: 20.323893}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 727749009}
   m_RootOrder: 3
@@ -1064,7 +1064,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 10, y: 20}
+  m_Size: {x: 8, y: 20}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1208,7 +1208,7 @@ MonoBehaviour:
     tetromino: 5
   - tile: {fileID: 11400000, guid: be0a34e2a842ae742b4fa8541a5f9fcf, type: 2}
     tetromino: 6
-  boardSize: {x: 10, y: 20}
+  boardSize: {x: 8, y: 20}
   spawnPosition: {x: -1, y: 8, z: 0}
   grid: {fileID: 2144466705}
   border: {fileID: 1062971707}
@@ -1455,7 +1455,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 10, y: 20}
+  m_Size: {x: 8, y: 20}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
