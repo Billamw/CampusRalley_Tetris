@@ -685,7 +685,7 @@ MonoBehaviour:
   - tile: {fileID: 11400000, guid: be0a34e2a842ae742b4fa8541a5f9fcf, type: 2}
     tetromino: 6
   boardSize: {x: 8, y: 28}
-  spawnPosition: {x: -1, y: 8, z: 0}
+  spawnPosition: {x: -1, y: 12, z: 0}
   grid: {fileID: 1364242839}
   border: {fileID: 711884983}
   grey_Tile: {fileID: 11400000, guid: e1fe7c005d38a674884e238a8d0dec64, type: 2}
@@ -1889,7 +1889,7 @@ MonoBehaviour:
   - tile: {fileID: 11400000, guid: be0a34e2a842ae742b4fa8541a5f9fcf, type: 2}
     tetromino: 6
   boardSize: {x: 8, y: 28}
-  spawnPosition: {x: -1, y: 8, z: 0}
+  spawnPosition: {x: -1, y: 12, z: 0}
   grid: {fileID: 2144466705}
   border: {fileID: 1062971707}
   grey_Tile: {fileID: 11400000, guid: e1fe7c005d38a674884e238a8d0dec64, type: 2}

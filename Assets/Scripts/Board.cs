@@ -12,7 +12,7 @@ public class Board : MonoBehaviour
     public TetrominoData[] tetrominoes;
     public Vector2Int boardSize = new Vector2Int(10, 20);
 
-    public Vector3Int spawnPosition = new Vector3Int(-1, 8, 0);
+    public Vector3Int spawnPosition = new Vector3Int(-1, 10, 0);
 
     public SpriteRenderer grid;
     public SpriteRenderer border;
@@ -39,7 +39,7 @@ public class Board : MonoBehaviour
         activePiece = GetComponentInChildren<Piece>();
 
         grid.size = boardSize;
-        //spawnPosition.y = (int)((boardSize.y - 1) / 2);
+        // spawnPosition.y = (int)((boardSize.y - 1) / 2);
         border.transform.localScale = new Vector3((float)boardSize.x / 10, (float)boardSize.y / 20, 1);
 
         for (int i = 0; i < tetrominoes.Length; i++) {
