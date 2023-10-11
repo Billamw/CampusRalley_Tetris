@@ -196,7 +196,12 @@ public class Board : MonoBehaviour
     public void SetEnemyLine()
     {
         RectInt bounds = Bounds;
-        int row = GetLineTile(tilemap_otherGame);
+        int row = bounds.yMin;
+        // Shift every row below up one
+        while (HasLineTile(row, tilemap_otherGame))
+        {
+            row++;
+        }
 
         while (row > bounds.yMin)
         {
@@ -231,24 +236,21 @@ public class Board : MonoBehaviour
 
     }
 
-    public int GetLineTile(Tilemap tilemap)
+    public bool HasLineTile(int row, Tilemap tilemap)
     {
         RectInt bounds = Bounds;
-        int row;
-        for (row = 0; row < bounds.yMax - bounds.yMin; row++)
-        {
-            for (int col = bounds.xMin; col < bounds.xMax; col++)
-            {
-                Vector3Int position = new Vector3Int(col, row, 0);
 
-                if (!tilemap.HasTile(position))
-                {
-                    break;
-                }
+        for (int col = bounds.xMin; col < bounds.xMax; col++)
+        {
+            Vector3Int position = new Vector3Int(col, row, 0);
+
+            if (tilemap.HasTile(position))
+            {
+                return true;
             }
         }
 
-        return row;
+        return false;
     }
 
 }
