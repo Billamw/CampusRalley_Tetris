@@ -43,15 +43,15 @@ public class WhoWon : MonoBehaviour
         }
 
         if (whoWon == 2) {
-            text.text = "\n\n press Enter to start the game!";
+            text.text = "\n\n                    press Enter \n                 to start the game!";
         }
         else if(whoWon == 0)
         {
-            text.text = "Player left lost! \n press Enter to start the game!";
+            text.text = "Lost                                                           Won";
         }
         else
         {
-            text.text = "Player right lost! \n press Enter to start the game!";
+            text.text = "Won                                                            Lost";
         }
 
         if(Input.GetKeyDown(KeyCode.Return))
